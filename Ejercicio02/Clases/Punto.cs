@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ejercicio02.Clases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,8 +34,6 @@ namespace Ejercicio02
         //Método
         public double CalcularDistanciaDesde(Punto pPunto)
         {
-            // Para calcular la distancia entre P1(X1;X2) y P2(X2;Y2) se utiliza:
-            // Sqrt( (X2-X1)^2 + (Y2-Y1)^2 )
             return Math.Sqrt(Math.Pow((this.iX - pPunto.X), 2) + Math.Pow((this.iY - pPunto.Y), 2));
         }
 

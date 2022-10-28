@@ -1,4 +1,6 @@
-﻿namespace Ejercicio02
+﻿using Ejercicio02.Clases;
+
+namespace Ejercicio02
 {
   public static class PantallaCirculo
   {
@@ -15,8 +17,8 @@
       double r = Double.Parse(Console.ReadLine());
 
       Console.WriteLine();
-      Console.WriteLine("El área del círculo es: " + ControladorCirculo.CalcularArea(x, y, r));
-      Console.WriteLine("El perímetro del círculo es: " + ControladorCirculo.CalcularPerimetro(x, y, r));
+      Console.WriteLine("El área del círculo es: " + FiguraGeometrica.CalcularArea(x, y, r));
+      Console.WriteLine("El perímetro del círculo es: " + FiguraGeometrica.CalcularPerimetro(x, y, r));
       Console.WriteLine();
       Console.Write("Presione ENTER para continuar...");
       Console.ReadKey();

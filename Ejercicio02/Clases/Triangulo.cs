@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ejercicio02.Clases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ejercicio02
 {
-    public class Triangulo
+    public class Triangulo : FiguraGeometrica
     {
         private Punto iPunto1, iPunto2, iPunto3;
 
@@ -34,21 +35,5 @@ namespace Ejercicio02
             get { return this.iPunto3; }
             set { this.iPunto3 = value; }
         }
-
-        public double Area
-        {
-            // Se utiliza la fórmula de Herón:
-            // P = Perimetro
-            // L = Lado
-            // Math.Sqrt( P/2 * (P/2 - L1) * (P/2 - L2) * (P/2 - L3) )
-
-            get { return Math.Sqrt( (Perimetro / 2) * ((Perimetro / 2) - iPunto1.CalcularDistanciaDesde(iPunto2)) * ((Perimetro / 2) - iPunto1.CalcularDistanciaDesde(iPunto3)) * ((Perimetro / 2) - iPunto2.CalcularDistanciaDesde(iPunto3))); }
-        }
-
-        public double Perimetro
-        {
-            get { return iPunto1.CalcularDistanciaDesde(iPunto2) + iPunto1.CalcularDistanciaDesde(iPunto3) + iPunto2.CalcularDistanciaDesde(iPunto3); }
-        }
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ejercicio02.Clases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ejercicio02
 {
-    public class Circulo
+    public class Circulo : FiguraGeometrica
     {
         private double iRadio;
         private Punto iCentro;
@@ -34,17 +35,5 @@ namespace Ejercicio02
             get { return this.iCentro; }
             set { this.iCentro = value; }
         }
-
-        public double Area
-        {
-            get { return Math.PI * Math.Pow(this.iRadio, 2); }
-        }
-
-        public double Perimetro
-        {
-            get { return 2 * Math.PI * this.iRadio; }
-        }
-
-
     }
 }
