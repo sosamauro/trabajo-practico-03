@@ -6,21 +6,23 @@ using System.Threading.Tasks;
 
 namespace Ejercicio04
 {
-    public abstract class Encriptador
+    public abstract class Encriptador : IEncriptador
     {
         private String iNombre;
 
-        public Encriptador(String pNombre)
+        public Encriptador(string pNombre)
         {
             this.iNombre = pNombre;
         }
 
-        public String Nombre
+        public string Nombre
         {
             get { return this.iNombre; }
             set { this.iNombre = value; }
         }
 
-        public String EncriptarCadena
+        public abstract string Encriptar(string pCadena);
+
+        public abstract string Desencriptar(string pCadena);
     }
 }
