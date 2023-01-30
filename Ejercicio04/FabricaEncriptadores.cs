@@ -17,6 +17,7 @@ namespace Ejercicio04
             iEncriptadores.Add("Cesar", new EncriptadorCesar(4));
             iEncriptadores.Add("AES", new EncriptadorAES());
             iEncriptadores.Add("Null", new EncriptadorNulo());
+            iEncriptadores.Add("TDES", new EncriptadorTDES());
         }
 
         public static FabricaEncriptadores Instancia()

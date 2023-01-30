@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ejercicio04
 {
-    public static class Controlador
-    {
+    public static class GestorEncriptadores
+    {  
         public static string EncriptarCadena(string pCadena, string pEncriptador)
         {
             FabricaEncriptadores instancia = FabricaEncriptadores.Instancia();

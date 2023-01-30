@@ -1,34 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Security.Cryptography;
 
 namespace Ejercicio04
 {
-    public class EncriptadorAES : Encriptador
+    public class EncriptadorTDES : Encriptador
     {
-        public EncriptadorAES() : base("AES") { }
-
-        // Documentación: https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.aes?view=net-6.0
+        public EncriptadorTDES() : base("TDES") { }
 
         public override string Encriptar(string pCadena)
         {
             byte[] encriptado;
-
-            // Se crea un objecto Aes
-            // con una Key y un IV específico
-            using (Aes aes = Aes.Create())
+            using (TripleDES tdes = TripleDES.Create())
             {
-                aes.Padding = PaddingMode.None;
-                // Crea un encriptador
-                ICryptoTransform encriptador = aes.CreateEncryptor(aes.Key, aes.IV);
-
-                // Crea un MemoryStream
+                ICryptoTransform encriptador = tdes.CreateEncryptor(tdes.Key, tdes.IV);
                 using (MemoryStream msEncrypt = new MemoryStream())
                 {
-                    // Crea un flujo criptográfico utilizando la clase CryptoStream. 
                     using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encriptador, CryptoStreamMode.Write))
                     {
                         using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
@@ -39,7 +30,6 @@ namespace Ejercicio04
                     }
                 }
             }
-
             return Encoding.UTF8.GetString(encriptado);
         }
 
@@ -47,13 +37,9 @@ namespace Ejercicio04
         {
             string desencriptado = null;
             byte[] cadenaEncriptada = Encoding.UTF8.GetBytes(pCadena);
-
-            using (Aes aes = Aes.Create())
+            using (TripleDES tdes = TripleDES.Create())
             {
-                aes.Padding = PaddingMode.None;
-
-                ICryptoTransform desencriptador = aes.CreateDecryptor(aes.Key, aes.IV);
-
+                ICryptoTransform desencriptador = tdes.CreateDecryptor(tdes.Key, tdes.IV);
                 using (MemoryStream msDecrypt = new MemoryStream(cadenaEncriptada))
                 {
                     using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, desencriptador, CryptoStreamMode.Read))
@@ -65,7 +51,6 @@ namespace Ejercicio04
                     }
                 }
             }
-
             return desencriptado;
         }
     }
